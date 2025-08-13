@@ -6,5 +6,34 @@
      /* background: url("./assets/106133.jpg") no-repeat center center fixed;
      background-size: cover; */
      min-height: 100vh;
+     background-color: #2b3945ff;
 
+}
+/* for filter*/
+.controls{
+       display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 100%;
+      margin-bottom: 30px;
+
+}
+
+.filter-container select {
+
+      padding: 10px 25px;
+      border:none;
+      border-radius: 10px;
+      font-size: medium;
+      background-color: white;
+      cursor: pointer;
+       transition : width 0.3s ease;
+}
+      
+
+
+.filter-container select:focus{
+    outline: none;
+    width: 250px;
+    background-color: bisque;
 }

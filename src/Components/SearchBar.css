@@ -2,18 +2,21 @@
 .search-bar {
     margin-bottom: 20px;
     display: flex;
-    justify-content: center;
-    background-color: yellowgreen;
+    justify-content: start;
+    margin-top: 20px;
+  
+
 }
 .search-bar input {
     width: 200px;
     padding: 10px;
     border-radius: 5px;
-    border: 1px solid white;
+    border: 1px solid rgb(14, 13, 13);
     transition : width 0.3s ease;
 }
 
 .search-bar input:focus{
     outline: none;
     width: 250px;
+    background-color: bisque;
 }
