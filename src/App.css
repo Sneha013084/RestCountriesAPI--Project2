@@ -1,0 +1,10 @@
+
+.app{
+     text-align: center;
+     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+     padding: 20px;
+     /* background: url("./assets/106133.jpg") no-repeat center center fixed;
+     background-size: cover; */
+     min-height: 100vh;
+
+}
