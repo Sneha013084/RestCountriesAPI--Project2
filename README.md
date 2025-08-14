@@ -23,3 +23,10 @@ Dropdown Filter Callback: Dropdown didn’t update the country list on selection
 Flag Image Scaling: Flag images were too tall for mobile cards. Solution: Used object-fit: cover and reduced height in media queries.
 
 Search + Filter Combination:Search and filter interfered with each other.Solution: Applied separate state updates and fetch logic for each feature.
+
+## Screenshot
+
+My Darkmode:
+<img width="1908" height="1016" alt="image" src="https://github.com/user-attachments/assets/dbd3550a-9c61-479d-b966-a922a934ccc7" />
+
+
