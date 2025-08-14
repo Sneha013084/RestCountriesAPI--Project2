@@ -1,13 +1,11 @@
 
 import React ,{ useState } from "react";
-import "./SearchBar.css";
 
- const SearchBar = (onSearch) =>{
+ const SearchBar = ({onSearch}) =>{
 
-    
-  // for searchbar changes
+       // for searchbar changes
   const [searchName, setSearchName] = useState("");
-    
+
 
   const handleSubmit = (event) => {
     event.preventDefault ();

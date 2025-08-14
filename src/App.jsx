@@ -1,23 +1,20 @@
 import { useState, useEffect } from "react";
 import "./App.css";
 import CountryList from "./Components/CountryList";
-import SearchBar from "./Components/SearchBar";
-import FilterCountry from "./Components/FilterCountry";
-import Header from "./Components/Header";
-import { Routes, Route} from "react-router-dom";
-//import Country from "./Components/Country";
+//import SearchBar from "./Components/SearchBar";
+////import FilterCountry from "./Components/FilterCountry";
+//import Header from "./Components/Header";
+import { Routes, Route } from "react-router-dom";
+import Country from './Components/Country';
 
 
 function App() {
-
-
   //1. Ftlter country by name:
   // filter countries is a variable to store the the data is coming form the countires,filter by search name
 
   // // const filteredCountries = countries.filter((country) =>
   // //   country.name.common.toLowerCase().includes(searchName.toLowerCase())
   // // );
-
 
   // //2. Filter country by region
   // // fetch the data by region name and stored in a variable called res- variable
@@ -48,22 +45,28 @@ function App() {
   //     <CountryList countries={filteredCountries} />
   //   );
 
-  
-    return (
-    <>
-      <Header />
-      <div className="controls">
+  {
+    /* <Header />
+      {/* <div className="controls">
         <SearchBar onSearch ={getCountryByName}/>
-       <FilterCountry onChange={filterCountryByRegion} />  
+      //  <FilterCountry onChange={filterCountryByRegion} />  
+      // </div> */
+  }
+  return (
+    <>
+      <div className="header">
+        <div className="container">
+          <h5>Where in the world</h5>
+        </div>
       </div>
-  <Routes>
-        <Route  path="/" element={ <CountryList/>} />
-        <Route path="/countries/:countryName" element={<Country />} />
-      </Routes>
+      <div className="container">
+        <Routes>
+          <Route path="/" element={<CountryList />} />
+          <Route path="/countries/:countryName" element={<Country />} />
+        </Routes>
+      </div>
     </>
   );
 }
-
-      
 
 export default App;

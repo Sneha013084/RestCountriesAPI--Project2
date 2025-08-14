@@ -1,66 +1,82 @@
-// import React, { useEffect, useState } from 'react'
-// import { Link, useParams} from 'react-router-dom';
+import React, { useEffect, useState } from 'react'
+import { Link, useParams} from 'react-router-dom';
  
-// const Country = ({countryData}) => {
-//     const [country, setCountry] = useState (countryData || null);
-//     const {name} =useParams()
+const Country = () => {
+    const [country, setCountry] = useState ([]);
+    const [isLoading, setIsLoading] = useState(true);
+    const[error ,setError] = useState('');
+    const {CountryName} =useParams()
+   
 
-//     useEffect(() => {
-//         if(!countryData&& name) {
-//         const fetchCountryData = async () =>{
-//            try{ const res = await fetch (`https://restcountries.com/v3.1/name/${name}?fullText=true`)
-//             const country = await res.json();
-//             setCountry (country[0]);
-//         }catch(error){
-//             console.log(error);
-//         }
-//     };
-//         fetchCountryData()
-// }
-//     }, [name, countryData]);
+    useEffect(() => {
+        
+        const getCountryByName= async () =>{
+           try{ const res = await fetch (`https://restcountries.com/v3.1/name/${CountryName}?fullText=true`)
+            
+           if(!res.ok) throw new Error ("Failed to fetch")
+           const data= await res.json();
+            setCountry (data);
+            setIsLoading(false);
+        }catch(error){
+            setIsLoading(false)
+            setError(error.message);
+        }
+    };
+        getCountryByName();
+  },[countryName]);
 
-//      const {flags, countryName, nativeName, 
-//                 population,region,subRegion,
-//                 capital,tld:topLevelDomain, currencies, 
-//                 languages,borders } =country || {};
+    {isLoading && !error && <h4>Loading........</h4>}
+      {error && !isLoading && { error }}
 
-//   return (
-//     <>
-//     <Link to= "/" className='btn btn -light'>
-//         <i className= "fas fa-arrow-left"> </i> Back
-//         Home
-//     </Link>
+       const {
+    flags,
+    name,
+    population,
+    region,
+    subregion,
+    capital,
+    tld,
+    currencies,
+    languages,
+    borders,
+  } = country;
+
     
-//     <section className='country'>
 
-//                     <article>
-//                         <div className='flag'>
-//                         <img src={flags?.png} alt={name}/>
-//                         </div>
-//                         <div className='country-details'>
-//                             <div>
-//                             <h2>{countryName.common}</h2>
-//                             <h5>Native Name:<span>{countryName.common}</span> </h5>
-//                             <h5>Population: <span>{population.toLocaleString()}</span></h5>
-//                             <h5>Region: <span>{region}</span></h5>
-//                             <h5>Sub Region: <span>{subRegion}</span></h5>
-//                             <h5>Capital : <span>{capital}</span></h5>
-//                             </div>
-//                             <div>
-//                             <h5>Top Level Domain :<span>{topLevelDomain?.[0].name}</span></h5>
-//                             <h5>Currencies: <span>{currencies && Object.values(currencies)[0].name}</span></h5>
-//                             <h5>Languages: <span>{languages&& Object.values(languages).join (",")}</span></h5>
-//                             </div>
+  return (
+    <>
+    <button>
+        <Link to= "/">Back </Link>
+    </button>
+    
 
-//                             <div>
-//                             <h5>Border Countries: {borders ? borders.join (",") : "None"}</h5> 
-//                             </div>
-//                         </div>
+     <div className='flag'>
+            <img src={country.flags.png} alt= ""/>
+        </div>
 
-//                     </article>
-//     </section>
-//     </>
-//   )
-// }
+         <div className='country-details'>
+            <div>
+            <h2>{countryName.common}</h2>
+                            <h5>Native Name:<span>{countryName.common}</span> </h5>
+                            <h5>Population: <span>{population.toLocaleString()}</span></h5>
+                            <h5>Region: <span>{region}</span></h5>
+                            <h5>Sub Region: <span>{subRegion}</span></h5>
+                            <h5>Capital : <span>{capital}</span></h5>
+                            </div>
+                            <div>
+                            <h5>Top Level Domain :<span>{topLevelDomain?.[0].name}</span></h5>
+                            <h5>Currencies: <span>{currencies && Object.values(currencies)[0].name}</span></h5>
+                            <h5>Languages: <span>{languages&& Object.values(languages).join (",")}</span></h5>
+                            </div>
 
-// export default Country;
+                            <div>
+                            <h5>Border Countries: {borders ? borders.join (",") : "None"}</h5> 
+                            </div>
+                        </div>
+
+            
+    </>
+  );
+}
+
+export default Country;
