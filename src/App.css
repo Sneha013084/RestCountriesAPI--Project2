@@ -2,40 +2,27 @@
   padding: 0;
   margin: 0;
   box-sizing: border-box;
-  font-family: "Lora", serif;
 }
 
 
 .app{
      text-align: center;
      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-     padding: 20px;
-     /* background: url("./assets/106133.jpg") no-repeat center center fixed;
-     background-size: cover; */
+     padding: 10px;
+      background: url("./assets/106133.jpg") no-repeat center center fixed;
+     background-size: cover; 
      min-height: 100vh;
      background-color: var(--dark-bg-color);
 
 }
 
-body,html{
-      width: 100%;
-      overflow-x: hidden;
-}
 
 .container{
   max-width: 1200px; /* desktop max width */
-  overflow: hidden;
+  overflow-x: hidden;
   padding: 0px 0px;
   width: 100%;
   background-color:  #2b3945ff;
-
-}
-.controls{
-       display: flex;
-      align-items: center;
-      justify-content: space-between;
-      width: 100%;
-      margin-bottom: 30px;
 
 }
 
@@ -46,10 +33,49 @@ body,html{
     align-items: center;
     color: white;
     padding: 1rem 2rem;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: var(--element-bg);
     position: sticky;
-    background-color: #4d4a4a;
+    max-width: 1200%;
+    box-sizing: border-box;
 
+}
+.header h4 {
+    max-width: 300px;
+}
+
+body.dark-mode {
+  --bg-color: hsl(207, 26%, 17%);        
+  --element-bg: #2b3945ff;               
+  --text-color: hsl(0, 0%, 100%);        
+  --input-bg: hsl(0, 0%, 52%);           
+}
+
+body.light-mode {
+  --bg-color: hsl(0, 0%, 98%);           
+  --element-bg: hsl(0, 0%, 100%);        
+  --text-color: hsl(200, 15%, 8%);       
+  --input-bg: hsl(0, 0%, 52%);          
+}
+
+body {
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  transition: all 0.3s ease; /* smooth transition when toggling */
+}
+
+.header,
+.country-card,
+.search-bar,
+.filter-container select {
+  background-color: var(--element-bg);
+  color: var(--text-color);
+}
+
+
+.search-bar input,
+.filter-container select {
+  background-color: var(--input-bg);
+  color: var(--text-color);
 }
 .country-list {
   
@@ -58,7 +84,7 @@ body,html{
     justify-content: center;
     gap: 20px;
     width: 100%;
-    max-width: 100%;
+    
     box-sizing: border-box;
 }
 
@@ -67,12 +93,11 @@ body,html{
     border: 1px solid #ccc;
     border-radius: 10px;
     padding: 10px;
-    margin: 10px;
+    gap:0; 
     text-align: center;
     width: 250px;
     box-shadow: 0 4px 8px rgba(0,0,0,0.1);
     overflow: hidden;
-    margin: 10px;
     position: relative;
     transform: translateY(20px);
     transition: transform 0.3s ease;
@@ -112,17 +137,30 @@ body,html{
     color: white;
 }
 
-.search-bar {
-    margin-bottom: 20px;
-    display: flex;
-    justify-content: start;
-    margin-top: 20px;
-    background-color: rgb(23, 23, 24);
-  
+.controls{
+       display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 100%;
+      margin-bottom: 30px;
+      gap:1rem;
 
 }
+
+
+.search-bar {
+    margin: 20px 0;
+    display: flex;
+    justify-content: start;
+    background-color: rgb(17, 17, 19);
+    max-width: 100%;
+    box-sizing :border-box;
+     background-color: rgb(238, 229, 229);
+}
+
 .search-bar input {
-    width: 200px;
+    width: 150px;
+    max-width: 400px;
     padding: 10px;
     border-radius: 5px;
     border: 1px solid rgb(14, 13, 13);
@@ -131,17 +169,17 @@ body,html{
 
 .search-bar input:focus{
     outline: none;
-    width: 250px;
-    background-color: bisque;
+    width: 200px;
+    background-color: rgb(218, 218, 208);
 }
 
 .filter-container select {
 
       padding: 10px 25px;
       border:none;
-      border-radius: 10px;
-      font-size: medium;
-      background-color: rgb(41, 36, 36);
+      border-radius: 5px;
+      font-size: small;
+      background-color: rgb(238, 229, 229);
       cursor: pointer;
       transition : width 0.3s ease;
 }
@@ -149,19 +187,35 @@ body,html{
 
 .filter-container select:focus{
     outline: none;
+    background-color: rgb(218, 218, 208);
     width: 250px;
-    background-color: bisque;
+ 
 }
 /* Media Queries: Tablet */
-@media (max-width: 1024px) {
-  .country-card {
-    width: 31%; /* 3 cards per row */
+@media (max-width:1024px){
+    .controls{
+        flex-direction: row;
+        justify-content: space-between;
+        gap:15px;
+    }
+    .search-bar{
+        max-width: 200px;
+    }
+      .filter-container select {
+    max-width: 200px;
   }
 }
-
-/* Mobile landscape */
+/* Mobile: stack vertically only if needed */
 @media (max-width: 768px) {
-  .country-card {
-    width: 48%; /* 2 cards per row */
+  .controls {
+    flex-direction: column; /* stack on very small screens */
+    align-items: stretch;
+    gap: 10px;
+  }
+
+  .search-bar,
+  .filter-container select {
+    width: 100%;
+
   }
 }
