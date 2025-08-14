@@ -26,7 +26,13 @@ Search + Filter Combination:Search and filter interfered with each other.Solutio
 
 ## Screenshot
 
-My Darkmode:
+## Light mode:
 <img width="1908" height="1016" alt="image" src="https://github.com/user-attachments/assets/dbd3550a-9c61-479d-b966-a922a934ccc7" />
+
+## Dark mode
+<img width="1869" height="1039" alt="image" src="https://github.com/user-attachments/assets/d54d3c3b-dd12-4bc1-947b-9e84645b62c9" />
+
+
+
 
 
