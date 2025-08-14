@@ -3,7 +3,7 @@ import React from 'react';
 
 
 // // onchange is a callback function
- export default function FilterCountry ({onChange}){
+ const FilterCountry = ({onSelect}) =>{
 
 //   // filter continents
    const regions = [
@@ -12,14 +12,14 @@ import React from 'react';
     { id: 2, name: "Antarctic" },
     { id: 3, name: "Asia" },
     { id: 4, name: "Europe" },
-    { id: 5, name: "North America" },
+    { id: 5, name: "Americas" },
     { id: 6, name: "Oceania" },
    ];
 //  // defining a handler function (callback is RegionName)
 
   const filterHandler =  (e) => {
         const regionName = e.target.value;
-        onChange(regionName);
+        onSelect(regionName);
 
   }
 
@@ -37,3 +37,5 @@ import React from 'react';
             </div>
       );
  }
+
+ export default FilterCountry;

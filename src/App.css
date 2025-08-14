@@ -18,10 +18,10 @@
 
 
 .container{
-  max-width: 1200px; /* desktop max width */
+    width: 100%;
+  max-width: 100%; /* desktop max width */
   overflow-x: hidden;
   padding: 0px 0px;
-  width: 100%;
   background-color:  #2b3945ff;
 
 }
@@ -35,13 +35,10 @@
     padding: 1rem 2rem;
     font-family: var(--element-bg);
     position: sticky;
-    max-width: 1200%;
-    box-sizing: border-box;
+    background-color: #4d4a4a;
 
 }
-.header h4 {
-    max-width: 300px;
-}
+
 
 body.dark-mode {
   --bg-color: hsl(207, 26%, 17%);        
@@ -83,7 +80,7 @@ body {
     flex-wrap: wrap;
     justify-content: center;
     gap: 20px;
-    width: 100%;
+  /*  width: 100%;*/
     
     box-sizing: border-box;
 }
@@ -95,14 +92,18 @@ body {
     padding: 10px;
     gap:0; 
     text-align: center;
-    width: 250px;
+    /*width: 250px;*/
     box-shadow: 0 4px 8px rgba(0,0,0,0.1);
     overflow: hidden;
     position: relative;
     transform: translateY(20px);
     transition: transform 0.3s ease;
-    background-color: rgb(61, 59, 59);
-    
+     background-color: var(--element-bg);
+    color: var(--text-color);
+    flex: 1 1 250px;
+    max-width: 300px;
+    min-width: 200px;
+    box-sizing: border-box;
 }
 .country-card:hover {
     transform: scale(1.05);
@@ -128,13 +129,13 @@ body {
 .info h2{
     font-size: 1rem;
     margin: 10px 0;
-    color: white;
+    color: var(--text-color);
     margin-bottom: 4px;
 }
 .info p{
     font-size: 0.8rem;
     margin :2px 0;
-    color: white;
+    color:var(--text-color);
 }
 
 .controls{
@@ -155,7 +156,8 @@ body {
     background-color: rgb(17, 17, 19);
     max-width: 100%;
     box-sizing :border-box;
-     background-color: rgb(238, 229, 229);
+    background-color: var(--element-bg);
+    
 }
 
 .search-bar input {
@@ -173,13 +175,16 @@ body {
     background-color: rgb(218, 218, 208);
 }
 
+.search-bar input::placeholder {
+  color: var(--text-color);
+  opacity: 0.7; 
+}
 .filter-container select {
 
       padding: 10px 25px;
       border:none;
       border-radius: 5px;
       font-size: small;
-      background-color: rgb(238, 229, 229);
       cursor: pointer;
       transition : width 0.3s ease;
 }
@@ -204,7 +209,15 @@ body {
       .filter-container select {
     max-width: 200px;
   }
+  .country-card{
+     flex: 1 1 180px; 
+     max-width: 200px;
+     min-width: 150px;
+  }
 }
+
+
+
 /* Mobile: stack vertically only if needed */
 @media (max-width: 768px) {
   .controls {
@@ -216,6 +229,17 @@ body {
   .search-bar,
   .filter-container select {
     width: 100%;
-
+  }
+    .country-card {
+        flex: 1 1 120px; 
+        max-width: 120px;
+        min-width: 100px;
+    
+  }
+  .flag{
+    height: 100px;
+  }
+  .country-list{
+    justify-content: center;
   }
 }

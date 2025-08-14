@@ -14,19 +14,19 @@ const CountryList = () => {
   const [countries, setCountries] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState("");
-    // for searchbar changes
-  const [searchName, setSearchName] = useState("");
+ 
     
 
 
-   const filteredCountries = countries.filter((country) =>
-    country.name.common.toLowerCase().includes(searchName.toLowerCase())
-  );
+  //  const filteredCountries = countries.filter((country) =>
+  //   country.name.common.toLowerCase().includes(searchName.toLowerCase())
+  // );
 
   // function for fetch countries
 
   const getCountryList = async () => {
     try {
+      setIsLoading(true);
       const response = await fetch(API_URL);
 
       if (!response.ok) throw new Error("Something went wrong");
@@ -49,6 +49,11 @@ const CountryList = () => {
     setIsLoading(true);
     setError("");
     try {
+      if(!countryName){
+        await getCountryList();
+        return;
+      }
+
       const res = await fetch(`https://restcountries.com/v3.1/name/${countryName}`);
       if (!res.ok) throw new Error("Not found any country !");
       const data = await res.json();
@@ -63,6 +68,14 @@ const CountryList = () => {
 
   const getCountryByRegion =async(regionName) =>{
     try{
+
+      setIsLoading(true);
+      setError("");
+
+      if(regionName === "all") {
+        await getCountryList();
+        return;
+      }
         const res= await fetch (`https://restcountries.com/v3.1/region/${regionName}`);
         if(!res.ok) throw new Error("Failed to fetch")
             const data = await res.json();
@@ -93,6 +106,7 @@ const CountryList = () => {
     </div>
 
     <div className="country-list">
+
       {countries?.map((country) => (
         <Link to={`/country/${country.name.common}`}>
        <div className="country-card" key={country.name?.common}>
