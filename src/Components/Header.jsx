@@ -1,4 +1,4 @@
-import React from 'react';
+
 import "./Header.css";
 
 export default function Header() {
@@ -6,7 +6,7 @@ export default function Header() {
    
         <header className ="header"> 
          <div>
-            <h1> Where is the world?</h1> 
+            <h1> Where in the world?</h1> 
          </div>
     <div>
         <i className='fas fa-moon'></i> Dark mode

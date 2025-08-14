@@ -6,7 +6,7 @@
      /* background: url("./assets/106133.jpg") no-repeat center center fixed;
      background-size: cover; */
      min-height: 100vh;
-     background-color: #2b3945ff;
+     background-color: var(--dark-bg-color);
 
 }
 /* for filter*/
@@ -25,11 +25,10 @@
       border:none;
       border-radius: 10px;
       font-size: medium;
-      background-color: white;
+      background-color: rgb(41, 36, 36);
       cursor: pointer;
-       transition : width 0.3s ease;
+      transition : width 0.3s ease;
 }
-      
 
 
 .filter-container select:focus{

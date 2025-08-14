@@ -2,17 +2,29 @@
 import React ,{ useState } from "react";
 import "./SearchBar.css";
 
-export default function SearchBar({setSearchName}){
+ const SearchBar = (onSearch) =>{
 
-    function OnChange (event) {
-        setSearchName(event.target.value);
+    
+  // for searchbar changes
+  const [searchName, setSearchName] = useState("");
+    
+
+  const handleSubmit = (event) => {
+    event.preventDefault ();
+    if (onSearch) {
+        onSearch(searchName);
     }
+  }
+    
     
     return(
-        <div className="search-bar">
+        <form className="search-bar" onSubmit={handleSubmit}>
             <input type="text" placeholder="Search for a country..."
-            onChange ={OnChange}/>
-        </div>
+            value={searchName}
+            onChange ={(event)=> setSearchName(event.target.value)}/>
+           
+        </form>
 
     );
 }
+export default SearchBar;

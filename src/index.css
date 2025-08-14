@@ -1,4 +1,11 @@
 :root {
+  
+ --dark-bg-color: hsl(207, 26%, 17%)
+ --light-mode-text: hsl(200, 15%, 8%)
+ --light-mode-input: hsl(0, 0%, 52%)
+ --light-mode-background: hsl(0, 0%, 98%)
+ --text-color: hsl(0, 0%, 100%)
+
   font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
   font-weight: 400;
