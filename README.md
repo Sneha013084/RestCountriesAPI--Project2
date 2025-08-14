@@ -1,12 +1,25 @@
-# React + Vite
+## Project Overview
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A React-based web application that displays countries from the REST Countries API. Users can:
 
-Currently, two official plugins are available:
+    View all countries with details (flag, population, region, capital).
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+    Search countries by name.
 
-## Expanding the ESLint configuration
+    Filter countries by region.
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+    Experience responsive design for desktops, tablets, and mobile devices.
+
+## The Challenges
+
+Responsive Card Design: Cards had fixed width and didn’t shrink on smaller screens.Solution: Used flex: 1 1 <value> with min-width and max-width, and adjusted media queries.
+
+Flexbox Wrapping: Cards were centered but didn’t reduce size properly.Solution: Changed justify-content to flex-start on desktop/tablet and center only on small mobile screens.
+
+API Handling: Multiple fetch requests needed proper loading and error handling.Solution: Created separate async functions with try-catch for each case.
+
+Dropdown Filter Callback: Dropdown didn’t update the country list on selection.Solution: Passed a callback from CountryList to FilterCountry and called it on onChange.
+
+Flag Image Scaling: Flag images were too tall for mobile cards. Solution: Used object-fit: cover and reduced height in media queries.
+
+Search + Filter Combination:Search and filter interfered with each other.Solution: Applied separate state updates and fetch logic for each feature.
